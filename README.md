@@ -60,7 +60,7 @@ Triggered when a spec is detected for a unit.
 - `isEnemy`: Boolean indicating whether the detected unit is an enemy.
 
 ### SPEC_LOST
-Triggered when the spec of a unit is no longer valid or has been forgotten.
+Triggered when the spec of a unit is no longer valid or has been forgotten. This is automatically triggered after 60 minutes of a guid's spec being detected.
 
 #### Arguments:
 - `event`: The event name (`"SPEC_LOST"`).
