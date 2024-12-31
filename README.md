@@ -43,7 +43,7 @@ LibSpecDetection-1.0 is a library designed to track and identify the specializat
 | Function                  | Description                                                                                 |
 |---------------------------|---------------------------------------------------------------------------------------------|
 | `specID = lib:GetSpecID(guid)` | Retrieves the specialization ID for a given GUID. Returns `nil` if the spec is not detected. |
-| `isEnemy = lib:IsEnemy(guid)` | Checks if the detected spec belongs to an enemy unit. Returns a boolean.                  |
+| `isEnemy = lib:IsEnemy(guid)` | Returns whether a GUID is a known enemy unit or not (boolean). <br/> <br/> Note: This is helpful when determining which unit ID(s) a GUID could be mapped to. |
 
 ---
 
@@ -92,14 +92,17 @@ end
 local function OnSpecDetected(event, unitID, guid, specID, isEnemy)
     print("Spec detected: Event =", event, "Unit ID =", unitID or "N/A", "GUID =", guid, "Spec ID =", specID, "Is Enemy =", isEnemy)
     
-    -- Get the spec ID for the GUID
-    local currentSpecID = LSD:GetSpecID(guid)
+    -- Get the spec ID for the player
+    local pGUID = UnitGUID("player")
+    local currentSpecID = LSD:GetSpecID(pGUID)
     if currentSpecID then
         print("Current spec ID:", currentSpecID)
     end
 
-    -- Check if the detected spec belongs to an enemy
-    local enemyStatus = LSD:IsEnemy(guid)
+    
+    -- Check if a GUID (in this case that of the target) is an enemy
+    tGUID = UnitExists("target") and UnitGUID("target")
+    local enemyStatus = LSD:IsEnemy(tGUID)
     print("Is Enemy:", enemyStatus)
 end
 
