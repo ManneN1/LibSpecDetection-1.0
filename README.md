@@ -34,7 +34,7 @@ LibSpecDetection-1.0 is a library designed to track and identify the specializat
 
 | Callback          | Description                                                                                       |
 |-------------------|---------------------------------------------------------------------------------------------------|
-| `SPEC_DETECTED`   | Fired when a spec is detected for a unit. Includes `unitID`, `guid`, `specID`, and `isEnemy`.    |
+| `SPEC_DETECTED`   | Fired when a spec is detected for a unit.    |
 | `SPEC_LOST`       | Fired when a detected spec expires or is reset.                                                   |
 | `SPEC_RESET`      | Fired when all detected specs are cleared (e.g., on world entry or loading screen).               |
 
